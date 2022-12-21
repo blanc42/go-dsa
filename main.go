@@ -1,7 +1,7 @@
 package main
 
 import (
-	"dsa/ds"
+	"dsa/ds/graph"
 )
 
 func main() {
@@ -23,7 +23,7 @@ func main() {
 	// x.Print()
 
 	// Graph
-	g := ds.NewGraph()
+	g := graph.NewGraph()
 	g.AddVertex(1)
 	g.AddVertex(2)
 	g.AddEdge(1, 2, 2)
