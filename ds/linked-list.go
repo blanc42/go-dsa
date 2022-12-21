@@ -3,85 +3,87 @@ package ds
 import "fmt"
 
 type Node struct {
-	data int
-	next *Node
+	Data int
+	Next *Node
 }
 
 type LinkedList struct {
-	count int
-	head  *Node
+	head *Node
 }
 
 func (l *LinkedList) Prepend(n *Node) {
-	n.next = l.head
+	n.Next = l.head
 	l.head = n
 }
 
-// add node
-func (l *LinkedList) AddNode(n *node) {
-
-}
-func (l *LinkedList) DeleteNode(n *node) {
-
-}
-func (l *LinkedList) UpdateNode(n *node) {
-
-}
-func (l *LinkedList) Print(n *node) {
-	temp := l.head
-	for temp != nil {
-		fmt.Println(temp.data, " -> ")
+func (l *LinkedList) AddNode(n *Node) {
+	n.Next = nil
+	if l.head == nil {
+		l.head = n
+	} else {
+		iter := l.head
+		for iter.Next != nil {
+			iter = iter.Next
+		}
+		iter.Next = n
 	}
-	fmt.Println()
+
 }
 
-// function to create linked list
-// func CreateList() (h *node) {
-// 	var head *node
-// 	head = nil
-// 	return head
-// }
+func (l *LinkedList) DeleteNode(n *Node) {
+	if l.head.Data == n.Data {
+		l.head = n.Next
+	}
+	var prevNode *Node = l.head
+	current := l.head.Next
 
-// method to add a node
-// adds a node at the end of the list
-// func (head *node) AddNode(d int) {
-// 	// temp := head
-// }
+	for {
+		if current != nil {
+			if current.Data == n.Data {
+				prevNode.Next = current.Next
+				break
+			} else {
+				prevNode = current
+				current = prevNode.Next
+			}
+		} else {
+			fmt.Println("no such Data exist")
+			break
+		}
+	}
 
-// var a []int = []int{1, 2, 3}
+}
 
-// method to print the linked list
-// func (h *node) String() {
-// 	temp := h
-// 	for temp.next != nil {
-// 		fmt.Printf("%v ->", temp.data)
-// 		temp = temp.next
-// 	}
-// }
+func (l *LinkedList) UpdateNode(old *Node, new *Node) {
+	iter := l.head
+	for {
+		if iter != nil {
+			if iter.Data == old.Data {
+				iter.Data = new.Data
+			} else {
+				iter = iter.Next
+			}
+		} else {
+			break
+		}
+	}
+}
 
-// method to delete a node if exists
-// func (h *node) DeleteNode(d int) {
-
-// 	var prevNode *node
-// 	var currentNode *node
-
-// 	we loop over the list and if check the data if each node
-// 	if any node matches then we take the past node's next pointer to the current node's next pointer
-
-// }
-
-// method to update a node
-
-// insert node
-
-// func main() {
-// 	// var head *node
-// 	// head = nil
-// 	head := createList()
-// 	temp := new(node)
-// 	(temp).data = 12
-// 	head = temp
-// 	// head.addNode(12)
-// 	// head.addNode(14)
-// 	fmt.Println(head)
-// }
+func (l *LinkedList) Print() {
+	if l.head == nil {
+		fmt.Println("list is empty")
+	} else {
+		temp := l.head
+		for {
+			if temp.Next != nil {
+				fmt.Print(temp.Data)
+				fmt.Print(" -> ")
+				temp = temp.Next
+			} else {
+				fmt.Print(temp.Data)
+				fmt.Println()
+				break
+			}
+		}
+	}
+}
