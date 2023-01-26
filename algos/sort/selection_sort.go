@@ -1,4 +1,4 @@
-package algos
+package sort
 
 import (
 	"dsa/utils"

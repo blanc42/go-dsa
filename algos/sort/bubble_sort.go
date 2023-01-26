@@ -1,10 +1,10 @@
-package algos
+package sort
 
 import (
 	"dsa/utils"
 )
 
-func BubbleSort(arr []int) []int {
+func BubbleSort(arr []int) {
 	var swapped bool = true
 	l := len(arr)
 	for swapped {
@@ -16,5 +16,4 @@ func BubbleSort(arr []int) []int {
 			}
 		}
 	}
-	return arr
 }

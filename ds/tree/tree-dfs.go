@@ -22,8 +22,3 @@ func (n *TreeNode) AddRightNode(x int) {
 func (n *TreeNode) PrintTree() {
 
 }
-
-// func main() {
-// 	var head *TreeNode
-
-// }
