@@ -1,4 +1,7 @@
-package ds
+/*
+this file contains source code for a singly linked list data structure
+*/
+package ll
 
 import "fmt"
 
@@ -7,15 +10,18 @@ type Node struct {
 	Next *Node
 }
 
+// default stuct node
 type LinkedList struct {
 	head *Node
 }
 
+// add a node to the start of the list
 func (l *LinkedList) Prepend(n *Node) {
 	n.Next = l.head
 	l.head = n
 }
 
+// add a note at the end of the list
 func (l *LinkedList) AddNode(n *Node) {
 	n.Next = nil
 	if l.head == nil {
@@ -30,6 +36,7 @@ func (l *LinkedList) AddNode(n *Node) {
 
 }
 
+// delete a given node from the list 
 func (l *LinkedList) DeleteNode(n *Node) {
 	if l.head.Data == n.Data {
 		l.head = n.Next
@@ -54,6 +61,7 @@ func (l *LinkedList) DeleteNode(n *Node) {
 
 }
 
+// update a part of the node, takes in old node and new node
 func (l *LinkedList) UpdateNode(old *Node, new *Node) {
 	iter := l.head
 	for {
@@ -69,6 +77,8 @@ func (l *LinkedList) UpdateNode(old *Node, new *Node) {
 	}
 }
 
+
+// print the linked list in 'x -> y -> z' format
 func (l *LinkedList) Print() {
 	if l.head == nil {
 		fmt.Println("list is empty")
