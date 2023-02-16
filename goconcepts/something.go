@@ -1,0 +1,5 @@
+package goconcepts
+
+func something() {
+
+}

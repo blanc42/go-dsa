@@ -1,5 +1,7 @@
 package sort
 
+import "dsa/algodaily"
+
 // not working yet
 // func merge(a []int, b []int) {
 // 	lena, lenb := len(a), len(b)
@@ -26,3 +28,15 @@ package sort
 // 		merge(nums[0:mid-1], nums[mid:len])
 // 	}
 // }
+
+func MergeSort(nums []int) []int {
+	n := len(nums)
+	if n < 2 {
+		return nums
+	}
+	left := MergeSort(nums[:n/2])
+	right := MergeSort(nums[n/2:])
+
+	ans := algodaily.MergeSortedArrary(left, right)
+	return ans
+}

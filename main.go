@@ -1,10 +1,30 @@
 package main
 
 import (
-	"dsa/algodaily"
+	"dsa/ds/heap"
 	"fmt"
 )
 
 func main() {
-	fmt.Println(algodaily.MergeSortedArrary([]int{-2, 0, 1, 2, 3, 7, 9, 12}, []int{4, 5, 6, 11}))
+	log := fmt.Println
+	// A := []int{2, 1, 3, 4, 5, 9, 7, 6, 8}
+	h := &heap.MaxHeap{}
+	h.Insert(10)
+	fmt.Println(h)
+	h.Insert(12)
+	fmt.Println(h)
+	h.Insert(1)
+	fmt.Println(h)
+	h.Insert(14)
+	fmt.Println(h)
+	// extrcting
+	log(h.Extract())
+	fmt.Println(h)
+	// extrcting
+	log(h.Extract())
+	fmt.Println(h)
+	// extrcting
+	log(h.Extract())
+	fmt.Println(h)
+
 }

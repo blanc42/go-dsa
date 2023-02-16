@@ -36,7 +36,7 @@ func (l *LinkedList) AddNode(n *Node) {
 
 }
 
-// delete a given node from the list 
+// delete a given node from the list
 func (l *LinkedList) DeleteNode(n *Node) {
 	if l.head.Data == n.Data {
 		l.head = n.Next
@@ -76,7 +76,6 @@ func (l *LinkedList) UpdateNode(old *Node, new *Node) {
 		}
 	}
 }
-
 
 // print the linked list in 'x -> y -> z' format
 func (l *LinkedList) Print() {

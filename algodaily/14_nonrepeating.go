@@ -42,6 +42,6 @@ func FirstNonRepeating(s string) {
 	}
 }
 
-func CheckFirstNonRepeating() {
+func TestFirstNonRepeating() {
 	FirstNonRepeating("aaaaabbbbs%%%%ddd")
 }
