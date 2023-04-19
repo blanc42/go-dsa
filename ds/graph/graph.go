@@ -2,17 +2,21 @@ package graph
 
 import "fmt"
 
+// edge struct (to -> from)
 type toedge struct {
 	to     int
 	weight int
 }
 
+// Graph contains slice of all Vertices, count of those and Map of Edges
+// unweighted graph
 type Graph struct {
 	Vertices []int
 	Count    int
 	Edges    map[int][]toedge
 }
 
+// returns a new graph struct
 func NewGraph() *Graph {
 	g := new(Graph)
 	// You have to initialize the map using the make function (or a map literal) before you can add any elements:

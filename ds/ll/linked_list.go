@@ -3,96 +3,55 @@ this file contains source code for a singly linked list data structure
 */
 package ll
 
-import "fmt"
+// node struct
 
-type Node struct {
-	Data int
-	Next *Node
+/*
+STRUCTS
+-------
+node struct { data, next pointer }
+Linkedlist struct { head pointer, length, tail pointer }
+
+FUNCTIONS
+----------
+New() creates and returns a Linkedlist
+
+
+METHODS
+-------
+Append(key int)
+Prepend(key int)
+Insert(pos int, key int)
+
+Extract(pos int)
+Pop() last element
+Deqeue() first element
+
+Update(pos int, key int)
+
+Delete(pos int)
+
+Print() prints the linked list in a pretty format
+ - this one should be String methods so the when used with Prinln it can be called
+
+*/
+
+type node struct {
+	data int
+	next *node
 }
 
-// default stuct node
-type LinkedList struct {
-	head *Node
+type Linkedlist struct {
+	head *node
+	len  int
+	tail *node
 }
 
-// add a node to the start of the list
-func (l *LinkedList) Prepend(n *Node) {
-	n.Next = l.head
-	l.head = n
+func (l *Linkedlist) Append(key int) {
+	n := &node{key, nil}
+	l.tail.next = n
+	l.tail = n
 }
 
-// add a note at the end of the list
-func (l *LinkedList) AddNode(n *Node) {
-	n.Next = nil
-	if l.head == nil {
-		l.head = n
-	} else {
-		iter := l.head
-		for iter.Next != nil {
-			iter = iter.Next
-		}
-		iter.Next = n
-	}
-
-}
-
-// delete a given node from the list
-func (l *LinkedList) DeleteNode(n *Node) {
-	if l.head.Data == n.Data {
-		l.head = n.Next
-	}
-	var prevNode *Node = l.head
-	current := l.head.Next
-
-	for {
-		if current != nil {
-			if current.Data == n.Data {
-				prevNode.Next = current.Next
-				break
-			} else {
-				prevNode = current
-				current = prevNode.Next
-			}
-		} else {
-			fmt.Println("no such Data exist")
-			break
-		}
-	}
-
-}
-
-// update a part of the node, takes in old node and new node
-func (l *LinkedList) UpdateNode(old *Node, new *Node) {
-	iter := l.head
-	for {
-		if iter != nil {
-			if iter.Data == old.Data {
-				iter.Data = new.Data
-			} else {
-				iter = iter.Next
-			}
-		} else {
-			break
-		}
-	}
-}
-
-// print the linked list in 'x -> y -> z' format
-func (l *LinkedList) Print() {
-	if l.head == nil {
-		fmt.Println("list is empty")
-	} else {
-		temp := l.head
-		for {
-			if temp.Next != nil {
-				fmt.Print(temp.Data)
-				fmt.Print(" -> ")
-				temp = temp.Next
-			} else {
-				fmt.Print(temp.Data)
-				fmt.Println()
-				break
-			}
-		}
-	}
+func (l *Linkedlist) Print() {
+	// current := h.head
 }
