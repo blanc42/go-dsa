@@ -1,17 +1,18 @@
 package sort
 
-import (
-	"dsa/utils"
-)
-
 func SelectionSort(arr []int) []int {
-	l := len(arr)
-	for i := 0; i < l; i++ {
-		for j := i + 1; j < l; j++ {
-			if arr[i] > arr[j] {
-				utils.SwapInt(&arr[i], &arr[j])
+	n := len(arr)
+
+	for i := 0; i < n; i++ {
+		min_index := i
+
+		for j := i + 1; j < n; j++ {
+			if arr[j] < arr[min_index] {
+				min_index = j
 			}
 		}
+
+		arr[i], arr[min_index] = arr[min_index], arr[i]
 	}
 	return arr
 }

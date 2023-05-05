@@ -1,6 +1,7 @@
 package main
 
 import (
+	"dsa/algos/sort"
 	"dsa/ds/stack"
 	"fmt"
 )
@@ -237,5 +238,5 @@ func countSubarrays(nums []int, minK int, maxK int) int64 {
 }
 
 func main() {
-	fmt.Println(countSubarrays([]int{2, 1, 2, 3, 5, 2, 7, 5, 1, 1}, 1, 5))
+	fmt.Println(sort.InsertionSort([]int{2, 1, 22, 3, 5, 12, 7, 5, 1, 1}))
 }
