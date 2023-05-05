@@ -169,6 +169,73 @@ func findMaxAverage(nums []int, k int) float64 {
 	return prev_avg
 }
 
+func totalFruit(fruits []int) int {
+	var max int
+	i := 0
+	for i < len(fruits) {
+		t1 := fruits[i]
+		t2 := -1
+		j := i + 1
+		var t2_index int
+		for j < len(fruits) {
+			if fruits[j] == t1 {
+				j++
+				continue
+			} else if fruits[j] != t1 && t2 == -1 {
+				t2 = fruits[j]
+				t2_index = j
+				j++
+				continue
+			} else if fruits[j] == t1 || fruits[j] == t2 {
+				j++
+				continue
+			} else {
+				break
+			}
+		}
+		if j-i > max {
+			max = j - i
+		}
+		i = t2_index
+		if j == len(fruits) {
+			return max
+		}
+
+	}
+	return max
+}
+
+func countSubarrays(nums []int, minK int, maxK int) int64 {
+	var res int64 = 0
+	var minFound, maxFound bool = false, false
+	var start, minStart, maxStart int = 0, 0, 0
+
+	for i := 0; i < len(nums); i++ {
+		num := nums[i]
+
+		if num < minK || num > maxK {
+			minFound = false
+			maxFound = false
+			start = i + 1
+		}
+
+		if num == minK {
+			minFound = true
+			minStart = i
+		}
+
+		if num == maxK {
+			maxFound = true
+			maxStart = i
+		}
+
+		if minFound && maxFound {
+			res += int64(min(minStart, maxStart) - start + 1)
+		}
+	}
+	return res
+}
+
 func main() {
-	fmt.Println(findMaxAverage([]int{1, 12, -5, -6, 50, 3}, 4))
+	fmt.Println(countSubarrays([]int{2, 1, 2, 3, 5, 2, 7, 5, 1, 1}, 1, 5))
 }
