@@ -1,8 +1,8 @@
 package main
 
 import (
-	"dsa/algos/sort"
 	"dsa/ds/stack"
+	"dsa/leetcode"
 	"fmt"
 )
 
@@ -238,5 +238,7 @@ func countSubarrays(nums []int, minK int, maxK int) int64 {
 }
 
 func main() {
-	fmt.Println(sort.InsertionSort([]int{2, 1, 22, 3, 5, 12, 7, 5, 1, 1}))
+	// fmt.Println(leetcode.LongestObstacleCourseAtEachPosition([]int{1,2,3,2})
+	// fmt.Println(leetcode.LengthOfLongestSubstring("pwwkew"))
+	fmt.Println(leetcode.LongestObstacleCourseAtEachPosition([]int{5, 1, 5, 5, 1, 3, 4, 5, 1, 4}))
 }
