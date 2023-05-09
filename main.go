@@ -239,6 +239,25 @@ func countSubarrays(nums []int, minK int, maxK int) int64 {
 
 func main() {
 	// fmt.Println(leetcode.LongestObstacleCourseAtEachPosition([]int{1,2,3,2})
-	// fmt.Println(leetcode.LengthOfLongestSubstring("pwwkew"))
-	fmt.Println(leetcode.LongestObstacleCourseAtEachPosition([]int{5, 1, 5, 5, 1, 3, 4, 5, 1, 4}))
+	// fmt.Println(leetcode.Reverse(-8463847412))
+	// b := byte('0')
+	// fmt.Println(int(b - '0'))
+	// modNeg := -1 * int(math.Pow(2, 31))
+	// fmt.Println(uint(modNeg))
+	// fmt.Println(-91283472332 % modNeg)
+	// fmt.Println(leetcode.Atoi("      -11919730356x"))
+	input := [][]int{
+		{1, 11},
+		{2, 12},
+		{3, 13},
+		{4, 14},
+		{5, 15},
+		{6, 16},
+		{7, 17},
+		{8, 18},
+		{9, 19},
+		{10, 20},
+	}
+
+	fmt.Println(leetcode.SpiralOrder(input))
 }
