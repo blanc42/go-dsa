@@ -1,4 +1,4 @@
-package main
+package ds
 
 import (
 	"fmt"
@@ -59,8 +59,10 @@ func (g *Graph) Print() {
 }
 
 func (g *Graph) BFS(vertex_id int) {
-	// Start := g.GetVertex(vertex_id)
+	Start := g.GetVertex(vertex_id)
 
+	dq := &Deque[*Vertex]{}
+	dq.Enqueue(Start)
 }
 
 func (g *Graph) DFS() {

@@ -1,4 +1,4 @@
-hello: main.go graph.go deque.go
-	go run main.go graph.go deque.go
-test: main.go
+hello: 
+	go run .
+test: 
 	go test ./...

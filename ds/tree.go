@@ -1,4 +1,4 @@
-package tree
+package ds
 
 type TreeNode struct {
 	Data  int

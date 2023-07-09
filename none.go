@@ -1,5 +1,10 @@
 package main
 
+import (
+	"dsa/ds"
+	"fmt"
+)
+
 func MinutesToSeconds(x int) int {
 	return x / 60
 }
@@ -35,7 +40,7 @@ func floodFill(image [][]int, sr int, sc int, color int) [][]int {
 }
 
 func tryStack() {
-	s := new(stack.Stack)
+	s := ds.NewDeque[int]()
 	fmt.Println(s)
 	s.Push(10)
 	fmt.Println(s)
@@ -231,89 +236,88 @@ func countSubarrays(nums []int, minK int, maxK int) int64 {
 	return res
 }
 
-
- type ListNode struct {
-     Val int
-     Next *ListNode
- }
- 
- func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
-    curr1 := list1
-    curr2 := list2
-    var outHead *ListNode
-    var outCurr *ListNode
-
-    if curr1 == nil && curr2 == nil {
-        return nil
-    } else if curr1 == nil {
-        return list2
-    } else if curr2 == nil {
-        return list1
-    }
-
-
-    // check until one of the current pointes becomes nil
-    for curr1 != nil && curr2 != nil {
-        var temp *ListNode
-        if curr1.Val > curr2.Val {
-            temp = curr1
-            curr1 = curr1.Next
-        } else {
-            temp = curr2
-            curr2 = curr2.Next
-        }
-        if outHead == nil {
-            outHead = temp
-            outCurr = temp
-        } 
-        temp.Next = nil
-        outCurr.Next = temp
-        outCurr = temp
-    }
-    // check if one or both pointers became nil and handle appropriately
-    if curr1 == nil && curr2 == nil {
-        return outHead
-    } else if curr1 == nil {
-        outCurr.Next = curr2
-    } else if curr2 == nil {
-        outCurr.Next = curr1
-    }
-    return outHead
+type ListNode struct {
+	Val  int
+	Next *ListNode
 }
 
-func threeSum(nums []int) [][]int {
-    sort.Slice(nums, func(i, j int) bool {
-        return nums[i] < nums[j]
-    })
-    var result [][]int 
-    for i,_ := range nums {
-        if i > 0 && nums[i]==nums[i-1] {
-            continue
-        }
-        j := i+1
-        k := len(nums)-1
-        for j < k {
-            if nums[i] + nums[j] + nums[k] == 0 {
-                result = append(result, []int{nums[i], nums[j], nums[k]})
-                for j < k && nums[j] == nums[j+1] {
-                    j++
-                }
-                for j < k && nums[k] == nums[k-1] {
-                    k--
-                }
-                j++
-                k--
-            } else if nums[i] + nums[j] + nums[k] < 0 {
-                for j < k && nums[j] == nums[j+1] {
-                    j++
-                }
-                j++
-            } else {
-                for j < k && nums[k] == nums[k-1] {
-                    k--
-                }
-                k--
-        }
-    }
-    return result
+func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
+	curr1 := list1
+	curr2 := list2
+	var outHead *ListNode
+	var outCurr *ListNode
+
+	if curr1 == nil && curr2 == nil {
+		return nil
+	} else if curr1 == nil {
+		return list2
+	} else if curr2 == nil {
+		return list1
+	}
+
+	// check until one of the current pointes becomes nil
+	for curr1 != nil && curr2 != nil {
+		var temp *ListNode
+		if curr1.Val > curr2.Val {
+			temp = curr1
+			curr1 = curr1.Next
+		} else {
+			temp = curr2
+			curr2 = curr2.Next
+		}
+		if outHead == nil {
+			outHead = temp
+			outCurr = temp
+		}
+		temp.Next = nil
+		outCurr.Next = temp
+		outCurr = temp
+	}
+	// check if one or both pointers became nil and handle appropriately
+	if curr1 == nil && curr2 == nil {
+		return outHead
+	} else if curr1 == nil {
+		outCurr.Next = curr2
+	} else if curr2 == nil {
+		outCurr.Next = curr1
+	}
+	return outHead
 }
+
+// func threeSum(nums []int) [][]int {
+//     sort.Slice(nums, func(i, j int) bool {
+//         return nums[i] < nums[j]
+//     })
+//     var result [][]int
+//     for i,_ := range nums {
+//         if i > 0 && nums[i]==nums[i-1] {
+//             continue
+//         }
+//         j := i+1
+//         k := len(nums)-1
+//         for j < k {
+//             if nums[i] + nums[j] + nums[k] == 0 {
+//                 result = append(result, []int{nums[i], nums[j], nums[k]})
+//                 for j < k && nums[j] == nums[j+1] {
+//                     j++
+//                 }
+//                 for j < k && nums[k] == nums[k-1] {
+//                     k--
+//                 }
+//                 j++
+//                 k--
+//             } else if nums[i] + nums[j] + nums[k] < 0 {
+//                 for j < k && nums[j] == nums[j+1] {
+//                     j++
+//                 }
+//                 j++
+//             } else {
+//                 for j < k && nums[k] == nums[k-1] {
+//                     k--
+//                 }
+//                 k--
+//         }
+//     }
+//     return result
+
+// }

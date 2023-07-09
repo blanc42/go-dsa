@@ -1,4 +1,4 @@
-package main
+package ds
 
 import "fmt"
 
@@ -16,6 +16,10 @@ func NewNode[T interface{}](val T) *Node[T] {
 type Deque[T interface{}] struct {
 	head *Node[T]
 	tail *Node[T]
+}
+
+func NewDeque[T comparable]() *Deque[T] {
+	return &Deque[T]{}
 }
 
 // checks if the head is nil, which means the deque is empty

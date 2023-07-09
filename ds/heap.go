@@ -1,4 +1,4 @@
-package heap
+package ds
 
 // max heap vs min heap
 
