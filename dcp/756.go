@@ -16,6 +16,9 @@ func AnaStringToInt(s string) int {
 		lvec[r]++
 	}
 
+	// thses need to order in a way such that they are eliminated completly
+	// seven + two => one
+	// instead of 27 it will give us one
 	numbers := []string{"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"}
 
 	// range over the numbers and
